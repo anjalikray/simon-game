@@ -4,7 +4,7 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
-$(document).keypress(function(){
+$("#start-game").click(function(){
 
     if(!started){
 
@@ -28,8 +28,7 @@ $(".btn").click(function(){
 
 function checkAnswer(currentLevel) {
     if(userClickedPattern[currentLevel] === gamePattern[currentLevel]){
-        console.log("sucess");
-
+        
         if(userClickedPattern.length === gamePattern.length){
              setTimeout(function(){
                 nextSequence();
@@ -37,8 +36,6 @@ function checkAnswer(currentLevel) {
         }
     }
     else{
-        console.log("wrong");
-
         audio = new Audio("sounds/" + "wrong.mp3");
         audio.play();
 
@@ -48,7 +45,7 @@ function checkAnswer(currentLevel) {
             $("body").removeClass("game-over")
         } , 400);
 
-        $("#level-title").text("Game Over, Press Any Key to Restart");
+        $("#level-title").text("Game Over, Click Button to Restart");
 
         startOver();
 
